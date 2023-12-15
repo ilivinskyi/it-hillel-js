@@ -31,11 +31,12 @@ const students = [
     ]; 
 
 function calculateAverageGrade(studentsArray) {
-    let totalGrade = 0;
-    studentsArray.forEach(function(student) {
-        totalGrade += student.grade;
-    })
-    return (totalGrade / studentsArray.length).toFixed(1);
+    const sum = studentsArray.reduce((acc, obj) => acc + obj.grade, 0);
+    // чи малось на увазі взагалі так зробити:
+    // return (studentsArray.reduce((acc, obj) => acc + obj.grade, 0) / studentsArray.length).toFixed(1);
+
+    const average = sum / studentsArray.length;
+    return parseFloat(average.toFixed(1));
 }
 
 console.log(calculateAverageGrade(students)); // 4.4
